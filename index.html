@@ -102,6 +102,89 @@
 
     // Start your code here
     // You may move this JS to another file if you wish
+
+    let consoleLogButton = errorBtns[0];
+    consoleLogButton.addEventListener("click", ()=>{
+      console.log("This button was just clicked");
+    });
+
+  let consoleErrorButton = errorBtns[1];
+  consoleErrorButton.addEventListener("click", () => {
+    console.error("The error button was just clicked");
+  });
+
+  let consoleCountButton = errorBtns[2];
+  consoleCountButton.addEventListener("click", () => {
+    console.count('Num of times clicked: ');
+  });
+
+  let consoleWarnButton = errorBtns[3];
+  consoleWarnButton.addEventListener("click", () => {
+    console.warn("This is a warning");
+  });
+
+  let consoleAssert = errorBtns[4];
+  consoleAssert.addEventListener("click", () => {
+    const stringOne = "Hello World";
+    const stringTwo = "Goodbye World";
+    console.assert(stringOne == stringTwo, "Error, the strings are not equal");
+  });
+
+  let consoleClearButton = errorBtns[5];
+  consoleClearButton.addEventListener("click", () => {
+    console.clear();
+  });
+
+  let consoleDirButton = errorBtns[6];
+  consoleDirButton.addEventListener("click", () => {
+    console.dir(errorBtns[2]);
+  });
+
+  let consoleDirXMLButton = errorBtns[7];
+  consoleDirXMLButton.addEventListener("click", () => {
+    console.dirxml(errorBtns[3]);
+  });
+
+  let consoleStart = errorBtns[8];
+  consoleStart.addEventListener("click", () => {
+    console.group();
+  });
+
+  let consoleEndGroup = errorBtns[9];
+  consoleEndGroup.addEventListener("click", () => {
+    console.groupEnd();
+  });
+
+  let consoleTable = errorBtns[10];
+  consoleTable.addEventListener("click", () => {
+    const people = [
+    ["Drishti", "Regmi"],
+    ["Ritu", "Regmi"],
+    ["Dron", "Regmi"],
+  ];
+    console.table(people);
+  });
+
+  let consoleStartTimer = errorBtns[11];
+  consoleStartTimer.addEventListener("click", () => {
+    console.time("Timer Button");
+  });
+
+  let consoleEndTimer = errorBtns[12];
+  consoleEndTimer.addEventListener("click", () => {
+    console.timeEnd("Timer Button");
+  });
+
+  let consoleTrace = errorBtns[13];
+  consoleTrace.addEventListener("click", () => {
+    console.trace();
+  });
+
+  let consoleGlobalErr = errorBtns[13];
+  consoleGlobalErr.addEventListener("click", () => {
+    //complete later
+  });
+
   </script>
 </body>
 
