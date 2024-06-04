@@ -143,14 +143,17 @@ errorButtons[15].addEventListener('click', e => {
       if(firstNum == "" || secondNum == "") {
         throw new MissingArgumentsError("At least one argument missing, try again");
       }
-        console.log(firstNum ** secondNum);
+
+      const result = firstNum ** secondNum;
+      document.querySelector("output").innerHTML = result;
+      console.log(firstNum ** secondNum);
     }
     catch(error) {
       console.error(error.name);
       console.error(error.message);
     }
     finally {
-      console.log("This try-catch is supposed to raise the value of the first number inputted to the second and print to console");
+      console.log("This try-catch is supposed to raise the value of the first number inputted to the second and print the console as well as display the result in the output box");
     }
 });  
 
@@ -259,8 +262,6 @@ errorButtons[15].addEventListener('click', e => {
   window.onerror = function(event, source, lineno, colno, error) {
     console.log("Sadly an error happened my friend");
 }
-
-
   </script>
 </body>
 
