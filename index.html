@@ -84,10 +84,76 @@
       <button>End Timer</button>
       <button>Console Trace</button>
       <button>Trigger a Global Error</button>
+      <button>Exponent Button</button>
     </section>
+    <p><b>To trigger the custom errors I created (MissingArgumentsError, AtLeastOneNotANumberError, BothMissingandNaN), leave at least one of the numbers in the error calculator blank and click the Exponent Button is you want to trigger the missing
+      arguments button. If you want to trigger the AtLeastOneNotANumberError, make sure at least one of the fields is not a number. If you want to trigger BothMissingandNaN, leave a field blank, and input a non-number for the other. 
+    </b></p>
   </main>
 
+  <script src="https://cdn.trackjs.com/agent/v3/latest/t.js"></script>
   <script>
+    window.TrackJS && TrackJS.install({ 
+      token: "3474d263652f4a538b7dad8f494006a1"
+      // for more configuration options, see https://docs.trackjs.com
+    });
+  </script>
+
+
+  <script>
+  //my custom errors
+  class MissingArgumentsError extends Error {
+  constructor(message) {
+    super(message); // (1)
+    this.name = "MissingArgumentsError"; // (2)
+  }
+}
+
+class AtLeastOneNotANumberError extends Error {
+  constructor(message) {
+    super(message); // (1)
+    this.name = "AtLeastOneNotANumberError"; // (2)
+  }
+}
+
+class BothMissingandNaN extends Error {
+  constructor(message) {
+    super(message); // (1)
+    this.name = "BothMissingandNaN"; // (2)
+  }
+}
+
+//fetch array of buttons
+let errorButtons = Array.from(document.querySelectorAll('#error-btns > button'));
+
+/*this code will print the value of the first field in the calculator raised to the value of the 
+second field in the console, the custom errors defined above are used in the try catch block in case
+invalid fields are inputted. Instructions for triggering the errors are on the webpage*/
+errorButtons[15].addEventListener('click', e => {
+  try {
+      let firstNum = document.querySelector('#first-num').value;
+      let secondNum = document.querySelector('#second-num').value;
+
+      if((firstNum == "" || secondNum == "") && (isNaN(firstNum) || isNaN(secondNum))) {
+        throw new BothMissingandNaN("One argument is missing, and another is not a number");
+      }
+      if((isNaN(firstNum) || isNaN(secondNum))) {
+        throw new AtLeastOneNotANumberError("At least one value is not a number");
+      }
+      if(firstNum == "" || secondNum == "") {
+        throw new MissingArgumentsError("At least one argument missing, try again");
+      }
+        console.log(firstNum ** secondNum);
+    }
+    catch(error) {
+      console.error(error.name);
+      console.error(error.message);
+    }
+    finally {
+      console.log("This try-catch is supposed to raise the value of the first number inputted to the second and print to console");
+    }
+});  
+
     let form = document.querySelector('form');
     form.addEventListener('submit', e => {
       e.preventDefault();
@@ -180,10 +246,17 @@
     console.trace();
   });
 
-  let consoleGlobalErr = errorBtns[13];
+  let consoleGlobalErr = errorBtns[14];
   consoleGlobalErr.addEventListener("click", () => {
     //complete later
+
+      throw new Error('Error triggered');
+  
+   
   });
+
+
+
 
   </script>
 </body>
