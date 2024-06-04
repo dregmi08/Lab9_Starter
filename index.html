@@ -224,10 +224,11 @@ errorButtons[15].addEventListener('click', e => {
   let consoleTable = errorBtns[10];
   consoleTable.addEventListener("click", () => {
     const people = [
-    ["Drishti", "Regmi"],
-    ["Ritu", "Regmi"],
-    ["Dron", "Regmi"],
-  ];
+    { firstName: "Drishti", lastName: "Regmi" },
+    { firstName: "Ritu", lastName: "Regmi" },
+    { firstName: "Dron", lastName: "Regmi" },
+    { firstName: "Chakra", lastName: "Regmi"}
+];
     console.table(people);
   });
 
@@ -255,7 +256,9 @@ errorButtons[15].addEventListener('click', e => {
    
   });
 
-
+  window.onerror = function(event, source, lineno, colno, error) {
+    console.log("Sadly an error happened my friend");
+}
 
 
   </script>
